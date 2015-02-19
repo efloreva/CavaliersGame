@@ -9,6 +9,8 @@ namespace Sudoku
         // Arrays with Sudoku - unsolved and solved
         static int[,] sudokuTask = new int[9, 9];
         static int[,] sudokuSolved = new int[9, 9];
+        // Bool array with locked positions corresponding to the numbers in the unsolved Sudoku 
+        static bool[,] isPositionLocked = new bool[9, 9];
 
         static void ReadSudoku()
         {
@@ -40,6 +42,7 @@ namespace Sudoku
                         else
                         {
                             sudokuTask[i, j] = line[j] - '0';
+                            isPositionLocked[i, j] = true;
                         }
                     }
                 }
