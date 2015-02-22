@@ -24,40 +24,49 @@ namespace Sudoku
             filePath.Append(fileNumber);
             filePath.Append(".txt");
 
-            // Using StreamReader to read Sudoku from the randomly selected file
-            StreamReader reader = new StreamReader(filePath.ToString());
-            using (reader)
+            try
             {
-            // Fill sudokuTask array from the first 9 rows of the file
-                for (int i = 0; i < 9; i++)
+                // Using StreamReader to read Sudoku from the randomly selected file
+                StreamReader reader = new StreamReader(filePath.ToString());
+                using (reader)
                 {
-                    string line = reader.ReadLine();
-
-                    for (int j = 0; j < 9; j++)
+                    // Fill sudokuTask array from the first 9 rows of the file
+                    for (int i = 0; i < 9; i++)
                     {
-                        if (line[j] == '-')
+                        string line = reader.ReadLine();
+
+                        for (int j = 0; j < 9; j++)
                         {
-                            sudokuTask[i, j] = 0;
-                        }
-                        else
-                        {
-                            sudokuTask[i, j] = line[j] - '0';
-                            isPositionLocked[i, j] = true;
+                            if (line[j] == '-')
+                            {
+                                sudokuTask[i, j] = 0;
+                            }
+                            else
+                            {
+                                sudokuTask[i, j] = line[j] - '0';
+                                isPositionLocked[i, j] = true;
+                            }
                         }
                     }
-                }
 
-                // Fill sudokuSolved array from the next 9 rows of the file
-                for (int i = 0; i < 9; i++)
-                {
-                    string line = reader.ReadLine();
-
-                    for (int j = 0; j < 9; j++)
+                    // Fill sudokuSolved array from the next 9 rows of the file
+                    for (int i = 0; i < 9; i++)
                     {
-                         sudokuSolved[i, j] = line[j] - '0';
+                        string line = reader.ReadLine();
+
+                        for (int j = 0; j < 9; j++)
+                        {
+                            sudokuSolved[i, j] = line[j] - '0';
+                        }
                     }
                 }
             }
+            // Exception handling in case file not found
+            catch (FileNotFoundException fnf)
+            {
+                Console.WriteLine(fnf.Message);
+            }
+            
         }
 
         static void PrintSudoku(int[,] sudoku)
