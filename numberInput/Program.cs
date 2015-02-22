@@ -17,7 +17,7 @@
                     PrintStringAtPosition(5, 3, ".." + sign, ConsoleColor.Green);
                     PrintStringAtPosition(5, 4, ".." + sign, ConsoleColor.Green);
                     PrintStringAtPosition(5, 5, ".." + sign, ConsoleColor.Green);
-                     "\n.." + sign + "\n.." + sign + "\n.." + sign + "\n.." + sign
+                    
                     break;
                 case 2:
                     Console.WriteLine(@"..|
