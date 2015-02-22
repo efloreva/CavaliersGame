@@ -20,6 +20,7 @@ class infoTable
         StringBuilder titleSB = new StringBuilder(progressBarElement + "Cavalier's Sudoku" + progressBarElement);
 
 
+
         do
         {
             titleSB.Insert(0, progressBarElement);
@@ -75,6 +76,94 @@ class infoTable
         public char symbol;
     }
 
+    static void TheNumber(int number,int horisontal,int vertical)
+        {
+
+            char sign = '#';
+            switch (number)
+            {
+                case 1:
+                    PrintStringAtPosition(horisontal, vertical + 1, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 2, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 3, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 5, "  " + sign, ConsoleColor.Green);
+                    
+                    break;
+                case 2: 
+                    PrintStringAtPosition(horisontal,vertical + 1,  new string (sign,3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal,vertical + 2, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal,vertical + 3, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal,vertical + 4, sign+ "  " , ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal,vertical + 5, new string(sign, 3), ConsoleColor.Green);
+                    
+                    break;
+                case 3:
+                    PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 2, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 3, " "+new string(sign, 2), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 4, "  "+ sign , ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+
+                    break;
+                case 4:
+                    PrintStringAtPosition(horisontal, vertical + 1, sign+" "+ sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 3,  new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 5, "  " + sign, ConsoleColor.Green);
+
+                    break;
+                case 5:
+                    PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 2, sign + "  ", ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 4,  "  "+ sign , ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+                    break;
+                case 6:
+                    PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 2, sign + "  ", ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 4,  sign + " "+ sign , ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+
+                    break;
+                case 7:
+                    PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 2, sign + " "+sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 3, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 5, "  " + sign, ConsoleColor.Green);
+
+                    break;
+                case 8:
+                    PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 4, sign + " " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+
+                    break;
+                case 9:
+                    PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
+                    PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+
+                    break;
+
+
+                default: Console.WriteLine(" dsa"); break;
+
+
+            }
+
+        
+        
+        
+        }
     static void Main()
     {
         var startTime = DateTime.Now;
@@ -98,6 +187,9 @@ class infoTable
                 PrintAtPosition(Console.WindowWidth-1, 4, '|', ConsoleColor.Gray);
             }
             PrintStringAtPosition(5, 1, "Team Cavalier Sudoku: ", ConsoleColor.Green);
+            TheNumber(8, 5,7);
+            TheNumber(9, 9,12);
+
 
             PrintStringAtPosition(15, 3, "Entered "+ count+"/81: ", ConsoleColor.Blue);
 
