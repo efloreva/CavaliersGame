@@ -131,9 +131,10 @@ class infoTable
                           
                             Console.ForegroundColor = ConsoleColor.White;
                             TheNumber(inputValue, x, y);
+                            Console.WriteLine("x-{0}\ny-{1}", x, y);
 
 
-                            Console.SetCursorPosition(x, y);
+                            //Console.SetCursorPosition(x, y);
                         }
                         else
                         {
@@ -154,6 +155,7 @@ class infoTable
 
     static void PrintStringAtPosition(int x, int y, string text, ConsoleColor color)
     {
+        
         Console.SetCursorPosition(x, y);
         Console.ForegroundColor = color;
         Console.Write(text);
@@ -161,6 +163,7 @@ class infoTable
 
     struct Unit
     {
+        public const int[] xcorrection = new int[9] { 3, 9, 15, 22, 28, 34, 41, 47, 54 };
         public int x;
         public int y;
         public ConsoleColor color;
