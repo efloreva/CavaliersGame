@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 class infoTable
 {
-    static void title()
+    static void Title()
     {
 
         const int maxProgressBarLength = 28;
@@ -94,8 +94,8 @@ class infoTable
                             j--;
                         }
                         break;
-                    case ConsoleKey.RightArrow:  
-                        if (x % 15 == 0||x%34==0)//corections for the grid jumps
+                    case ConsoleKey.RightArrow:
+                        if (x % 15 == 0 || x % 34 == 0)//corections for the grid jumps
                         {
                             x += 1;
                         }
@@ -128,10 +128,10 @@ class infoTable
                         {
                             inputValue = int.Parse(key.KeyChar.ToString());
                             sudoku[i, j] = inputValue;
-                          
+
                             Console.ForegroundColor = ConsoleColor.White;
-                            TheNumber(inputValue, x, y);
-                            Console.WriteLine("x-{0}\ny-{1}", x, y);
+                            TheNumber(inputValue, x, y,ConsoleColor.Green);
+                          
 
 
                             //Console.SetCursorPosition(x, y);
@@ -155,15 +155,46 @@ class infoTable
 
     static void PrintStringAtPosition(int x, int y, string text, ConsoleColor color)
     {
-        
+
         Console.SetCursorPosition(x, y);
         Console.ForegroundColor = color;
         Console.Write(text);
     }
 
+    static int XToCoord(int x)
+    {
+        int[] xcorrection = new int[9] { 3, 9, 15, 22, 28, 34, 41, 47, 54 };
+       
+       int corrd = xcorrection[x];
+
+        return corrd;
+    }
+
+    static int YToCoord(int y)
+    {
+        int[] ycorrection = new int[9] { 6, 12, 18, 24, 30, 36, 42, 48, 54 };
+
+        int corrd = ycorrection[y];
+
+        return corrd;
+    }
+    static void PrintSudoku(int[,] sudoku)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+               
+                TheNumber(sudoku[i, j], XToCoord(i), YToCoord(j),ConsoleColor.Blue);
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+    }
+
     struct Unit
     {
-        public const int[] xcorrection = new int[9] { 3, 9, 15, 22, 28, 34, 41, 47, 54 };
+
         public int x;
         public int y;
         public ConsoleColor color;
@@ -211,102 +242,102 @@ class infoTable
         {
             //for (int k = number; k < 59; k += 25)
             //{
-                PrintStringAtPosition(number, i, "|", ConsoleColor.DarkGray);
-                PrintStringAtPosition(number + 6, i, "|", ConsoleColor.DarkGray);
+            PrintStringAtPosition(number, i, "|", ConsoleColor.DarkGray);
+            PrintStringAtPosition(number + 6, i, "|", ConsoleColor.DarkGray);
 
             //}
             //horizontal inner
-            for (int j = 0; j < number+13; j++)
+            for (int j = 0; j < number + 13; j++)
             {
                 PrintStringAtPosition(j, offset + 5, "-", ConsoleColor.DarkGray);
                 PrintStringAtPosition(j, offset + 11, "-", ConsoleColor.DarkGray);
-              
+
             }
 
         }
     }
 
-    static void TheNumber(int number, int horisontal, int vertical)
+    static void TheNumber(int number, int horisontal, int vertical,ConsoleColor color)
     {
-
+        Console.ForegroundColor = color;
         char sign = '█';
         switch (number)
         {
             case 1:
-                PrintStringAtPosition(horisontal, vertical + 1, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, "  " + sign, ConsoleColor.Green);
+                PrintStringAtPosition(horisontal, vertical + 1, "  " + sign,color);
+                PrintStringAtPosition(horisontal, vertical + 2, "  " + sign,color);
+                PrintStringAtPosition(horisontal, vertical + 3, "  " + sign,color);
+                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign,color);
+                PrintStringAtPosition(horisontal, vertical + 5, "  " + sign,color);
 
                 break;
             case 2:
-                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, sign + "  ", ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3),color);
+                PrintStringAtPosition(horisontal, vertical + 2, "  " + sign, color);
+                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), color);
+                PrintStringAtPosition(horisontal, vertical + 4, sign + "  ", color);
+                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), color);
 
                 break;
             case 3:
-                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, " " + new string(sign, 2), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), color);
+                PrintStringAtPosition(horisontal, vertical + 2, "  " + sign, color);
+                PrintStringAtPosition(horisontal, vertical + 3, " " + new string(sign, 2), color);
+                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, color);
+                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), color);
 
                 break;
             case 4:
-                PrintStringAtPosition(horisontal, vertical + 1, sign + " " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, "  " + sign, ConsoleColor.Green);
+                PrintStringAtPosition(horisontal, vertical + 1, sign + " " + sign, color);
+                PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, color);
+                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), color);
+                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, color);
+                PrintStringAtPosition(horisontal, vertical + 5, "  " + sign, color);
 
                 break;
             case 5:
-                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, sign + "  ", ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), color);
+                PrintStringAtPosition(horisontal, vertical + 2, sign + "  ", color);
+                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), color);
+                        PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, color);
+                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), color);
                 break;
             case 6:
-                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, sign + "  ", ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, sign + " " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), color);
+                        PrintStringAtPosition(horisontal, vertical + 2, sign + "  ", color);
+                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), color);
+                  PrintStringAtPosition(horisontal, vertical + 4, sign + " " + sign, color);
+                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), color);
 
                 break;
             case 7:
-                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, "  " + sign, ConsoleColor.Green);
+                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), color);
+                  PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, color);
+                        PrintStringAtPosition(horisontal, vertical + 3, "  " + sign, color);
+                        PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, color);
+                        PrintStringAtPosition(horisontal, vertical + 5, "  " + sign, color);
 
                 break;
             case 8:
-                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, sign + " " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3),color);
+                  PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign,color);
+                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3),color);
+                  PrintStringAtPosition(horisontal, vertical + 4, sign + " " + sign,color);
+                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3),color);
 
                 break;
             case 9:
-                PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, ConsoleColor.Green);
-                PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), ConsoleColor.Green);
+                   PrintStringAtPosition(horisontal, vertical + 1, new string(sign, 3), color);
+                     PrintStringAtPosition(horisontal, vertical + 2, sign + " " + sign, color);
+                   PrintStringAtPosition(horisontal, vertical + 3, new string(sign, 3), color);
+                           PrintStringAtPosition(horisontal, vertical + 4, "  " + sign, color);
+                   PrintStringAtPosition(horisontal, vertical + 5, new string(sign, 3), color);
 
                 break;
 
-           
 
-            default: Console.WriteLine(" dsa"); break;
+
+            default: Console.WriteLine(" "); break;
 
 
         }
@@ -317,9 +348,19 @@ class infoTable
     }
     static void Main()
     {
+        int[,] test = {{1,0,1,1,1,1,1,1,1},
+                         {2,2,2,2,2,2,2,2,2},
+                         {3,3,3,3,3,3,3,3,3},
+                         {4,4,4,4,4,4,4,4,4},
+                         {1,2,3,0,5,6,7,8,9},
+                         {6,6,6,6,6,6,6,6,6},
+                         {7,7,7,7,7,7,7,7,7},
+                         {8,8,8,8,8,8,8,8,8},
+                         {9,9,9,9,9,9,9,9,9}};
+        PrintSudoku(test);
         Console.WindowWidth = 59;
         var startTime = DateTime.Now;
-        new Thread(title).Start();
+        new Thread(Title).Start();
         var count = 22;
         while (true)
         {
@@ -343,11 +384,11 @@ class infoTable
                 GridMain(i, 6 + 18); // +9 to skip the cell spaces
                 GridMain(i, 6 + 18 * 2); // +9 to skip the cell spaces
                 GridMain(i, 6 + 18 * 3); // +9 to skip the cell spaces
-                
-                
+
+
             }
 
-           
+
             //first column
             InnerGrid(5 + 2, 7);
             InnerGrid(5 + 2, 25);
@@ -357,7 +398,7 @@ class infoTable
             //second column
             InnerGrid(19 + 5 + 2, 7);
             InnerGrid(19 + 5 + 2, 25);
-            InnerGrid(19+ 5 + 2, 43);
+            InnerGrid(19 + 5 + 2, 43);
             //second column END
             //thurd column
             InnerGrid(38 + 5 + 2, 7);
