@@ -1,0 +1,6 @@
+C:\Users\marvas\Documents\Visual Studio 2013\Projects\Team--Cavalier\CavaliersGame\infotable\bin\Debug\infotable.exe.config
+C:\Users\marvas\Documents\Visual Studio 2013\Projects\Team--Cavalier\CavaliersGame\infotable\obj\Debug\infotable.csprojResolveAssemblyReference.cache
+C:\Users\marvas\Documents\Visual Studio 2013\Projects\Team--Cavalier\CavaliersGame\infotable\bin\Debug\infotable.exe
+C:\Users\marvas\Documents\Visual Studio 2013\Projects\Team--Cavalier\CavaliersGame\infotable\bin\Debug\infotable.pdb
+C:\Users\marvas\Documents\Visual Studio 2013\Projects\Team--Cavalier\CavaliersGame\infotable\obj\Debug\infotable.exe
+C:\Users\marvas\Documents\Visual Studio 2013\Projects\Team--Cavalier\CavaliersGame\infotable\obj\Debug\infotable.pdb
